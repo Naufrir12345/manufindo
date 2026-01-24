@@ -16,7 +16,7 @@ export default function ProductShowcase() {
                     {/* Product 1: Biotrix */}
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         {/* Image */}
-                        <div className="relative flex items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 min-h-[500px] overflow-hidden group">
+                        <div className="relative flex items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 min-h-[400px] md:min-h-[500px] overflow-hidden group">
                             <div className="absolute inset-0 bg-blue-500/10 blur-[120px] rounded-full scale-110 group-hover:scale-150 transition-transform duration-700"></div>
 
                             <motion.div
@@ -36,33 +36,25 @@ export default function ProductShowcase() {
                             </motion.div>
 
                             {/* Floating Badges */}
-                            <motion.div
-                                animate={{ y: [0, -10, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute top-10 left-8 z-20 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-white flex items-center gap-3"
-                            >
-                                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                                    <Activity size={18} />
+                            <div className="absolute top-6 left-6 md:top-10 md:left-8 z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3">
+                                <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                                    <Activity size={14} className="md:w-[18px] md:h-[18px]" />
                                 </div>
                                 <div>
-                                    <p className="text-[9px] text-slate-400 font-bold uppercase tracking-tight">Status</p>
-                                    <p className="text-xs font-bold text-slate-900">Real-time Active</p>
+                                    <p className="text-[7px] md:text-[9px] text-slate-400 font-bold uppercase tracking-tight">Status</p>
+                                    <p className="text-[10px] md:text-xs font-bold text-slate-900">Real-time Active</p>
                                 </div>
-                            </motion.div>
+                            </div>
 
-                            <motion.div
-                                animate={{ y: [0, 10, 0] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute bottom-10 right-8 z-20 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-white flex items-center gap-3"
-                            >
-                                <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
-                                    <ShieldCheck size={18} />
+                            <div className="absolute bottom-6 right-6 md:bottom-10 md:right-8 z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3">
+                                <div className="w-6 h-6 md:w-8 md:h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                                    <ShieldCheck size={14} className="md:w-[18px] md:h-[18px]" />
                                 </div>
                                 <div>
-                                    <p className="text-[9px] text-slate-400 font-bold uppercase tracking-tight">Security</p>
-                                    <p className="text-xs font-bold text-slate-900">Industrial Grade</p>
+                                    <p className="text-[7px] md:text-[9px] text-slate-400 font-bold uppercase tracking-tight">Security</p>
+                                    <p className="text-[10px] md:text-xs font-bold text-slate-900">Industrial Grade</p>
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
 
                         {/* Product Info */}
@@ -72,7 +64,7 @@ export default function ProductShowcase() {
                                     <Zap size={14} fill="currentColor" />
                                     <span className="text-[10px] font-bold uppercase tracking-widest">New Release 2024</span>
                                 </div>
-                                <h2 className="text-4xl font-bold text-slate-900 leading-tight">
+                                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
                                     Biotrix Smart Fingerprint Access<br />
                                     <span className="text-blue-600">Series BX-125</span>
                                 </h2>
@@ -139,7 +131,7 @@ export default function ProductShowcase() {
                                     <Zap size={14} fill="currentColor" />
                                     <span className="text-[10px] font-bold uppercase tracking-widest">New Release 2024</span>
                                 </div>
-                                <h2 className="text-4xl font-bold text-slate-900 leading-tight">
+                                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
                                     RoomPulse Monitoring System <br />
                                     <span className="text-blue-600">Series RMS-010</span>
                                 </h2>
@@ -197,7 +189,7 @@ export default function ProductShowcase() {
                         </div>
 
                         {/* Image - Kanan */}
-                        <div className="relative flex items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 min-h-[500px] overflow-hidden group">
+                        <div className="relative flex items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 min-h-[400px] md:min-h-[500px] overflow-hidden group order-first lg:order-last">
                             <div className="absolute inset-0 bg-blue-500/10 blur-[120px] rounded-full scale-110 group-hover:scale-150 transition-transform duration-700"></div>
 
                             <motion.div
@@ -216,33 +208,25 @@ export default function ProductShowcase() {
                                 />
                             </motion.div>
 
-                            <motion.div
-                                animate={{ y: [0, -10, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute top-10 left-8 z-20 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-white flex items-center gap-3"
-                            >
-                                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                                    <Activity size={18} />
+                            <div className="absolute top-6 left-6 md:top-10 md:left-8 z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3">
+                                <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                                    <Activity size={14} className="md:w-[18px] md:h-[18px]" />
                                 </div>
                                 <div>
-                                    <p className="text-[9px] text-slate-400 font-bold uppercase tracking-tight">Status</p>
-                                    <p className="text-xs font-bold text-slate-900">Real-time Active</p>
+                                    <p className="text-[7px] md:text-[9px] text-slate-400 font-bold uppercase tracking-tight">Status</p>
+                                    <p className="text-[10px] md:text-xs font-bold text-slate-900">Real-time Active</p>
                                 </div>
-                            </motion.div>
+                            </div>
 
-                            <motion.div
-                                animate={{ y: [0, 10, 0] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute bottom-10 right-8 z-20 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-white flex items-center gap-3"
-                            >
-                                <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
-                                    <ShieldCheck size={18} />
+                            <div className="absolute bottom-6 right-6 md:bottom-10 md:right-8 z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3">
+                                <div className="w-6 h-6 md:w-8 md:h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                                    <ShieldCheck size={14} className="md:w-[18px] md:h-[18px]" />
                                 </div>
                                 <div>
-                                    <p className="text-[9px] text-slate-400 font-bold uppercase tracking-tight">Security</p>
-                                    <p className="text-xs font-bold text-slate-900">Industrial Grade</p>
+                                    <p className="text-[7px] md:text-[9px] text-slate-400 font-bold uppercase tracking-tight">Security</p>
+                                    <p className="text-[10px] md:text-xs font-bold text-slate-900">Industrial Grade</p>
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
 

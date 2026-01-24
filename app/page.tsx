@@ -33,14 +33,14 @@ const DigitalOrbitFooter = dynamic(() => import('./components/DigitalOrbitFooter
 // National Reach Section (kept inline as it's simple)
 function NationalReachSection() {
   return (
-    <section className="py-20 bg-slate-50 overflow-hidden">
+    <section className="py-16 md:py-20 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl font-bold text-slate-900">National Reach</h2>
           <p className="text-slate-500 mt-2">Connecting industries across the archipelago.</p>
         </div>
 
-        <div className="relative w-full h-[400px] lg:h-[600px] bg-white rounded-[2rem] border-2 border-dashed border-slate-200 flex items-center justify-center group overflow-hidden shadow-sm">
+        <div className="relative w-full h-[300px] md:h-[400px] lg:h-[600px] bg-white rounded-[2rem] border-2 border-dashed border-slate-200 flex items-center justify-center group overflow-hidden shadow-sm">
           <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px] opacity-50"></div>
 
           <div className="text-center z-10">

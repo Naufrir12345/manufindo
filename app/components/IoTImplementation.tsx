@@ -7,8 +7,8 @@ const IoTImplementation = () => {
   // Definisi tipe Variants untuk menghindari error TypeScript
   const lineVariants: Variants = {
     hidden: { pathLength: 0, opacity: 0 },
-    visible: { 
-      pathLength: 1, 
+    visible: {
+      pathLength: 1,
       opacity: 1,
       transition: { duration: 2.5, ease: "linear", repeat: Infinity }
     }
@@ -17,8 +17,8 @@ const IoTImplementation = () => {
   return (
     <section className="relative min-h-screen bg-[#f8fafc] py-20 overflow-hidden flex flex-col items-center justify-center">
       {/* Judul Seksi */}
-      <div className="text-center mb-24 z-10">
-        <h2 className="text-5xl font-black text-slate-900 tracking-tighter uppercase mb-4">
+      <div className="text-center mb-12 md:mb-24 z-10">
+        <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase mb-4">
           Integrated IoT Ecosystem
         </h2>
         <p className="text-slate-500 font-medium max-w-xl mx-auto">
@@ -27,13 +27,13 @@ const IoTImplementation = () => {
       </div>
 
       {/* Container Utama Isometrik */}
-      <div className="relative w-full max-w-6xl aspect-[16/10] flex items-center justify-center">
-        
+      <div className="relative w-full max-w-6xl aspect-[1/1] md:aspect-[16/10] flex items-center justify-center scale-75 md:scale-100">
+
         {/* SVG Garis Penghubung antar 4 Titik */}
-        <svg 
-          viewBox="0 0 1000 600" 
+        <svg
+          viewBox="0 0 1000 600"
           className="absolute inset-0 w-full h-full z-0 pointer-events-none"
-          fill="none" 
+          fill="none"
         >
           <defs>
             <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -45,10 +45,10 @@ const IoTImplementation = () => {
 
           {/* Garis dari Sensor (Kiri) ke Cloud (Tengah) */}
           <motion.path d="M250 300 L500 200" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="6,6" variants={lineVariants} initial="hidden" whileInView="visible" />
-          
+
           {/* Garis dari Factory (Bawah) ke Cloud (Tengah) */}
           <motion.path d="M500 450 L500 250" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="6,6" variants={lineVariants} initial="hidden" whileInView="visible" />
-          
+
           {/* Garis dari Cloud (Tengah) ke Dashboard (Kanan) */}
           <motion.path d="M550 220 L750 300" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="6,6" variants={lineVariants} initial="hidden" whileInView="visible" />
         </svg>
@@ -56,7 +56,7 @@ const IoTImplementation = () => {
         {/* --- IMPLEMENTASI 4 FILE SVG --- */}
 
         {/* 1. CLOUD AI (Pusat / Center) */}
-        <motion.div 
+        <motion.div
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           className="absolute z-20 w-64 h-64"
@@ -66,7 +66,7 @@ const IoTImplementation = () => {
         </motion.div>
 
         {/* 2. SENSOR NODE (Kiri / West) */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
           className="absolute left-[10%] top-[40%] w-40 h-40 group"
@@ -76,7 +76,7 @@ const IoTImplementation = () => {
         </motion.div>
 
         {/* 3. SMART FACTORY (Bawah / South) */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-44 h-44 group"
@@ -86,7 +86,7 @@ const IoTImplementation = () => {
         </motion.div>
 
         {/* 4. ANALYTICS DASHBOARD (Kanan / East) */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           className="absolute right-[10%] top-[40%] w-44 h-44 group"

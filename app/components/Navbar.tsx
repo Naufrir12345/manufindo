@@ -9,7 +9,7 @@ import DetailProduct from './DetailProduct';
 const StackedProductCard = ({ item, index, activeIndex, total, onClick, onDetailClick, onSimulasiClick }: any) => {
   // Menghitung posisi relatif terhadap kartu yang sedang aktif
   const relativeIndex = (index - activeIndex + total) % total;
-  
+
   // Logika posisi: kartu aktif di depan (0), kartu lain mundur ke belakang
   const zIndex = total - relativeIndex;
   const opacity = 1 - relativeIndex * 0.2;
@@ -32,11 +32,11 @@ const StackedProductCard = ({ item, index, activeIndex, total, onClick, onDetail
       whileHover={relativeIndex === 0 ? { y: yOffset - 10, scale: scale + 0.02 } : {}}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       onClick={onClick}
-      className={`absolute w-[340px] md:w-[500px] min-h-[300px] p-8 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] border border-white/30 backdrop-blur-3xl flex flex-col justify-between overflow-hidden cursor-pointer group ${item.color}`}
+      className={`absolute w-[280px] sm:w-[340px] md:w-[500px] min-h-[300px] p-8 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] border border-white/30 backdrop-blur-3xl flex flex-col justify-between overflow-hidden cursor-pointer group ${item.color}`}
     >
       {/* Glossy Overlay */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/30 via-transparent to-black/20 pointer-events-none" />
-      
+
       <div className="relative z-10 flex justify-between items-start">
         <div className="w-14 h-14 bg-white/20 backdrop-blur-xl rounded-2xl flex items-center justify-center text-white border border-white/40 shadow-2xl">
           <item.icon size={30} strokeWidth={1.5} />
@@ -58,13 +58,13 @@ const StackedProductCard = ({ item, index, activeIndex, total, onClick, onDetail
 
       {/* Action Buttons - Hanya muncul/interaktif jika kartu di depan */}
       <div className={`relative z-10 flex gap-3 mt-8 transition-opacity duration-300 ${relativeIndex === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <button 
+        <button
           onClick={(e) => { e.stopPropagation(); onSimulasiClick(); }}
           className="flex-1 py-4 bg-white text-slate-900 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-100 transition-all flex items-center justify-center gap-2"
         >
           Mulai Simulasi <ArrowRight size={14} />
         </button>
-        <button 
+        <button
           onClick={(e) => { e.stopPropagation(); onDetailClick(); }}
           className="px-8 py-4 bg-black/20 text-white border border-white/20 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-black/40 backdrop-blur-md transition-all"
         >
@@ -81,7 +81,8 @@ const StackedProductCard = ({ item, index, activeIndex, total, onClick, onDetail
 const Navbar = () => {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPricingOpen, setIsPricingOpen] = useState(false);
 
@@ -138,7 +139,7 @@ const Navbar = () => {
         <div className={`mx-auto transition-all duration-500 ${isScrolled ? 'max-w-5xl bg-white/90 backdrop-blur-lg shadow-xl rounded-[2.5rem] border border-slate-200 py-3 px-8' : 'max-w-7xl bg-transparent py-8 px-4'}`}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3 group cursor-pointer" onClick={() => router.push('/')}>
-              <div className="relative w-10 h-10"><Image src="/Logo Manufindo1-01.png" alt="Logo" fill className="object-contain"/></div>
+              <div className="relative w-10 h-10"><Image src="/Logo Manufindo1-01.png" alt="Logo" fill className="object-contain" /></div>
               <div className="flex flex-col">
                 <span className={`font-black text-lg leading-none ${isScrolled ? 'text-slate-900' : 'text-blue-900'}`}>MANUFINDO</span>
                 <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-blue-600">Cipta Nusantara</span>
@@ -149,9 +150,8 @@ const Navbar = () => {
                 Product
               </button>
 
-              {/* Tombol Tentang Kami menggunakan router.push */}
-              <button 
-                onClick={() => router.push('/about')} 
+              <button
+                onClick={() => router.push('/about')}
                 className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors"
               >
                 Tentang Kami
@@ -164,19 +164,85 @@ const Navbar = () => {
                 Gabung Mitra
               </button>
             </div>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              className="md:hidden p-2 text-slate-600 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </nav>
 
+      {/* Mobile Menu Drawer */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 bg-slate-950/20 backdrop-blur-sm z-[90]"
+            />
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed right-0 top-0 bottom-0 w-[280px] bg-white shadow-2xl z-[150] p-8 flex flex-col gap-6"
+            >
+              <div className="flex justify-between items-center mb-4">
+                <span className="font-black text-blue-900">MENU</span>
+                <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-slate-400">
+                  <X size={24} />
+                </button>
+              </div>
+
+              <button
+                onClick={() => { setIsOpen(true); setIsMobileMenuOpen(false); }}
+                className="text-left py-3 border-b border-slate-100 font-bold text-slate-600 hover:text-blue-600"
+              >
+                Product
+              </button>
+              <button
+                onClick={() => { router.push('/about'); setIsMobileMenuOpen(false); }}
+                className="text-left py-3 border-b border-slate-100 font-bold text-slate-600 hover:text-blue-600"
+              >
+                Tentang Kami
+              </button>
+              <button
+                onClick={() => { router.push('#pricing'); setIsMobileMenuOpen(false); }}
+                className="text-left py-3 border-b border-slate-100 font-bold text-slate-600 hover:text-blue-600"
+              >
+                Harga
+              </button>
+              <button
+                onClick={() => { router.push('#contact'); setIsMobileMenuOpen(false); }}
+                className="text-left py-3 border-b border-slate-100 font-bold text-slate-600 hover:text-blue-600"
+              >
+                Kontak
+              </button>
+
+              <button className="mt-4 px-6 py-4 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all">
+                Gabung Mitra
+              </button>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       <AnimatePresence>
         {isOpen && (
           <>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
               className="fixed inset-0 bg-slate-950/80 backdrop-blur-[20px] z-[110]"
             />
-            
+
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -184,26 +250,26 @@ const Navbar = () => {
               className="fixed inset-0 z-[120] flex flex-col items-center justify-center p-6"
             >
               {/* Header */}
-              <div className="text-center mb-12">
-                <motion.h2 initial={{ y: -20 }} animate={{ y: 0 }} className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4">Our Solutions.</motion.h2>
-                <p className="text-white/40 font-bold tracking-widest uppercase text-xs">Tap a card to bring it forward • Click Detail to Explore</p>
+              <div className="text-center mb-8 md:mb-12">
+                <motion.h2 initial={{ y: -20 }} animate={{ y: 0 }} className="text-3xl md:text-6xl font-black text-white tracking-tighter mb-4">Our Solutions.</motion.h2>
+                <p className="text-white/40 font-bold tracking-widest uppercase text-[10px] md:text-xs">Tap a card to bring it forward • Click Detail to Explore</p>
               </div>
 
               {/* STACKED AREA - Center Positioned */}
               <div className="relative w-full max-w-[500px] h-[450px] flex items-center justify-center perspective-[1000px]">
                 {products.map((item, idx) => (
-                  <StackedProductCard 
-                    key={idx} 
-                    item={item} 
-                    index={idx} 
+                  <StackedProductCard
+                    key={idx}
+                    item={item}
+                    index={idx}
                     activeIndex={activeIndex}
                     total={products.length}
                     onClick={() => setActiveIndex(idx)}
                     onSimulasiClick={() => { setIsOpen(false); router.push('/simulation'); }}
                     onDetailClick={() => {
-                        setIsOpen(false);
-                        if(idx === 0) router.push('/pricing');
-                        else setIsPricingOpen(true);
+                      setIsOpen(false);
+                      if (idx === 0) router.push('/pricing');
+                      else setIsPricingOpen(true);
                     }}
                   />
                 ))}
@@ -212,8 +278,8 @@ const Navbar = () => {
               {/* Navigation Indicator */}
               <div className="mt-12 flex gap-2">
                 {products.map((_, i) => (
-                  <button 
-                    key={i} 
+                  <button
+                    key={i}
                     onClick={() => setActiveIndex(i)}
                     className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === i ? 'w-8 bg-white' : 'w-2 bg-white/20'}`}
                   />

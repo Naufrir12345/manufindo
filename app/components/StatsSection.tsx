@@ -31,13 +31,13 @@ const Counter = ({ value }: { value: number }) => {
 
 export default function StatsSection() {
     return (
-        <section className="py-24 bg-white border-y border-slate-100">
+        <section className="py-16 md:py-24 bg-white border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
 
                     {/* Stat 1: Customer */}
                     <div className="space-y-2">
-                        <h3 className="text-5xl font-bold text-blue-600 flex justify-center items-center">
+                        <h3 className="text-4xl md:text-5xl font-bold text-blue-600 flex justify-center items-center">
                             <Counter value={17} />
                             <span>+</span>
                         </h3>
@@ -46,7 +46,7 @@ export default function StatsSection() {
 
                     {/* Stat 2: Projects */}
                     <div className="space-y-2">
-                        <h3 className="text-5xl font-bold text-slate-900 flex justify-center items-center">
+                        <h3 className="text-4xl md:text-5xl font-bold text-slate-900 flex justify-center items-center">
                             <Counter value={25} />
                             <span>+</span>
                         </h3>
@@ -55,7 +55,7 @@ export default function StatsSection() {
 
                     {/* Stat 3: Cities */}
                     <div className="space-y-2">
-                        <h3 className="text-5xl font-bold text-slate-900 flex justify-center items-center">
+                        <h3 className="text-4xl md:text-5xl font-bold text-slate-900 flex justify-center items-center">
                             <Counter value={5} />
                             <span>+</span>
                         </h3>
