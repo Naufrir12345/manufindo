@@ -221,10 +221,10 @@ const Navbar = () => {
                 Tentang Kami
               </button>
               <button
-                onClick={() => { router.push('#pricing'); setIsMobileMenuOpen(false); }}
+                onClick={() => { router.push('/use-case'); setIsMobileMenuOpen(false); }}
                 className="text-left py-3 border-b border-slate-100 font-bold text-slate-600 hover:text-blue-600"
               >
-                Harga
+                Use Case
               </button>
               <button
                 onClick={() => { router.push('#contact'); setIsMobileMenuOpen(false); }}
