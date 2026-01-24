@@ -10,7 +10,7 @@ const cases = [
         title: "Smart Manufacturing",
         icon: Factory,
         color: "blue",
-        image: "/usecase-factory.jpg",
+        image: "/manufacturing.png",
         description: "Digitalisasi lini produksi untuk efisiensi mutlak dan pengurangan downtime.",
         benefits: ["OEE Monitoring Real-time", "Predictive Maintenance", "Pencatatan Produksi Otomatis"],
         challenges: [
@@ -35,7 +35,7 @@ const cases = [
         title: "Precision Agriculture",
         icon: Sprout,
         color: "emerald",
-        image: "/usecase-farm.jpg",
+        image: "/agriculture.png",
         description: "Sistem irigasi dan pemantauan nutrisi tanah otomatis berbasis sensor.",
         benefits: ["Optimasi Penggunaan Air", "Monitoring pH Tanah", "Prediksi Masa Panen"],
         challenges: [
@@ -60,7 +60,7 @@ const cases = [
         title: "Livestock Management",
         icon: Dog,
         color: "orange",
-        image: "/usecase-livestock.jpg",
+        image: "/livestock.png",
         description: "Pemantauan kesehatan dan lingkungan ternak untuk hasil pangan berkualitas.",
         benefits: ["Ammonia Level Monitoring", "Automatic Feeding System", "Health Tracking"],
         challenges: [
@@ -85,7 +85,7 @@ const cases = [
         title: "Smart Housing",
         icon: Home,
         color: "indigo",
-        image: "/usecase-home.jpg",
+        image: "/smarthome.png",
         description: "Integrasi keamanan dan manajemen energi untuk hunian modern.",
         benefits: ["Smart Lighting & HVAC", "Akses Kontrol Biometrik", "Pendeteksi Kebocoran Gas"],
         challenges: [

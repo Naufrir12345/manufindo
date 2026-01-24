@@ -164,9 +164,12 @@ const Navbar = () => {
                 Use Case
               </button>
 
-              {/* <a href="#pricing" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Harga</a> */}
-              <a href="#contact" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Kontak</a>
-
+              <button
+                onClick={() => { router.push('/platform'); setIsMobileMenuOpen(false); }}
+                className="text-left py-3 border-b border-slate-100 font-bold text-slate-600 hover:text-blue-600"
+              >
+                Orbit Platform
+              </button>
               <button className="px-6 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all">
                 Gabung Mitra
               </button>
@@ -227,10 +230,10 @@ const Navbar = () => {
                 Use Case
               </button>
               <button
-                onClick={() => { router.push('#contact'); setIsMobileMenuOpen(false); }}
+                onClick={() => { router.push('#platform'); setIsMobileMenuOpen(false); }}
                 className="text-left py-3 border-b border-slate-100 font-bold text-slate-600 hover:text-blue-600"
               >
-                Kontak
+                Orbit Platform
               </button>
 
               <button className="mt-4 px-6 py-4 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all">
