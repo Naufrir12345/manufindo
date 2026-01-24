@@ -230,7 +230,7 @@ const Navbar = () => {
                 Use Case
               </button>
               <button
-                onClick={() => { router.push('#platform'); setIsMobileMenuOpen(false); }}
+                onClick={() => { router.push('/platform'); setIsMobileMenuOpen(false); }}
                 className="text-left py-3 border-b border-slate-100 font-bold text-slate-600 hover:text-blue-600"
               >
                 Orbit Platform
