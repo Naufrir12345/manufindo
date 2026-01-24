@@ -88,7 +88,7 @@ export default function Home() {
       </Suspense>
 
       <Suspense fallback={<div className="h-screen bg-white animate-pulse" />}>
-        <ProductShowcase />
+        {/* <ProductShowcase /> */}
       </Suspense>
 
       <Suspense fallback={<div className="h-96 bg-slate-900 animate-pulse" />}>

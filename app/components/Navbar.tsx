@@ -157,7 +157,14 @@ const Navbar = () => {
                 Tentang Kami
               </button>
 
-              <a href="#pricing" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Harga</a>
+              <button
+                onClick={() => router.push('/use-case')}
+                className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors"
+              >
+                Use Case
+              </button>
+
+              {/* <a href="#pricing" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Harga</a> */}
               <a href="#contact" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Kontak</a>
 
               <button className="px-6 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all">
