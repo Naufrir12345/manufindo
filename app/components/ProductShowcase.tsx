@@ -18,23 +18,15 @@ export default function ProductShowcase() {
                         {/* Image */}
                         <div className="relative flex items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 min-h-[400px] md:min-h-[500px] overflow-hidden group">
                             <div className="absolute inset-0 bg-blue-500/10 blur-[120px] rounded-full scale-110 group-hover:scale-150 transition-transform duration-700"></div>
-
-                            <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                                className="relative z-10 w-full h-full flex items-center justify-center p-0 scale-110"
-                            >
-                                <Image
-                                    src="/Biotrix.png"
-                                    alt="Biotrix Smart Fingerprint Access"
-                                    width={800}
-                                    height={800}
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    quality={85}
-                                    className="w-[90%] h-[90%] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
-                                />
-                            </motion.div>
-
+                            <Image
+                                src="/Biotrix.png"
+                                alt="Biotrix Smart Fingerprint Access"
+                                width={800}
+                                height={800}
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                quality={85}
+                                className="w-[90%] h-[90%] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
+                            />
                             {/* Floating Badges */}
                             <div className="absolute top-6 left-6 md:top-10 md:left-8 z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3">
                                 <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
@@ -191,23 +183,15 @@ export default function ProductShowcase() {
                         {/* Image - Kanan */}
                         <div className="relative flex items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 min-h-[400px] md:min-h-[500px] overflow-hidden group order-first lg:order-last">
                             <div className="absolute inset-0 bg-blue-500/10 blur-[120px] rounded-full scale-110 group-hover:scale-150 transition-transform duration-700"></div>
-
-                            <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                                className="relative z-10 w-full h-full flex items-center justify-center p-0 scale-110"
-                            >
-                                <Image
-                                    src="/RoomPulse.png"
-                                    alt="RoomPulse Monitoring System"
-                                    width={800}
-                                    height={800}
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    quality={85}
-                                    className="w-[90%] h-[90%] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
-                                />
-                            </motion.div>
-
+                            <Image
+                                src="/RoomPulse.png"
+                                alt="RoomPulse Monitoring System"
+                                width={800}
+                                height={800}
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                quality={85}
+                                className="w-[90%] h-[90%] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
+                            />
                             <div className="absolute top-6 left-6 md:top-10 md:left-8 z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3">
                                 <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
                                     <Activity size={14} className="md:w-[18px] md:h-[18px]" />
