@@ -146,7 +146,7 @@ const SuccessStories = () => {
               </div>
 
               <blockquote className="italic text-slate-700 mt-6 border-l-4 border-blue-500 pl-4">
-                "{story.testimonial}"
+                &quot;{story.testimonial}&quot;
                 <p className="mt-2 text-sm font-semibold text-slate-800">- {story.personName}, <span className="text-slate-500">{story.personTitle}</span></p>
               </blockquote>
             </motion.div>

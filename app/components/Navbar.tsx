@@ -1,12 +1,29 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Zap, Activity, Cpu, Factory, ArrowRight } from 'lucide-react';
+import { Menu, X, Zap, Activity, Cpu, Factory, ArrowRight, LucideIcon } from 'lucide-react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import DetailProduct from './DetailProduct';
 
-const StackedProductCard = ({ item, index, activeIndex, total, onClick, onDetailClick, onSimulasiClick }: any) => {
+interface ProductItem {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  color: string;
+}
+
+interface StackedProductCardProps {
+  item: ProductItem;
+  index: number;
+  activeIndex: number;
+  total: number;
+  onClick: () => void;
+  onDetailClick: () => void;
+  onSimulasiClick: () => void;
+}
+
+const StackedProductCard = ({ item, index, activeIndex, total, onClick, onDetailClick, onSimulasiClick }: StackedProductCardProps) => {
   // Menghitung posisi relatif terhadap kartu yang sedang aktif
   const relativeIndex = (index - activeIndex + total) % total;
 
@@ -100,7 +117,7 @@ const Navbar = () => {
   ];
 
   // Fungsi untuk scroll tumpukan
-  const nextCard = () => setActiveIndex((prev) => (prev + 1) % products.length);
+  // const nextCard = () => setActiveIndex((prev) => (prev + 1) % products.length);
 
   useEffect(() => {
     if (!isOpen) return; // Hanya jalankan listener jika modal/gallery terbuka

@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Factory, Sprout, Dog, Home, ArrowUpRight, CheckCircle2, AlertCircle, Cpu, ShieldCheck } from 'lucide-react';
+import { Factory, Sprout, Dog, Home, CheckCircle2, AlertCircle, Cpu, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
+import ProjectTimeline from './ProjectTimeline';
 
 const cases = [
     {
@@ -28,6 +29,12 @@ const cases = [
             { step: "02", label: "Data Gateway", detail: "Data dikirim secara enkripsi ke gateway lokal Manufindo untuk pemrosesan awal." },
             { step: "03", label: "AI Analysis", detail: "Cloud AI menganalisis pola anomali untuk memprediksi potensi kerusakan mesin." },
             { step: "04", label: "Actionable Insights", detail: "Dashboard menampilkan laporan real-time dan notifikasi jadwal maintenance ke tim teknis." }
+        ],
+        timeline: [
+            { sprint: "Sprint 1", week: "Week 1-2", deliverable: "Site Assessment & Sensor Installation", description: "Survey lokasi pabrik, identifikasi titik kritis mesin, instalasi sensor IoT pada lini produksi utama.", status: "completed" as const },
+            { sprint: "Sprint 2", week: "Week 3-4", deliverable: "Gateway Setup & Data Integration", description: "Konfigurasi data gateway lokal, testing koneksi sensor ke cloud, validasi akurasi data real-time.", status: "completed" as const },
+            { sprint: "Sprint 3", week: "Week 5-6", deliverable: "AI Model Training & Dashboard Development", description: "Training model AI dengan data historis, development dashboard monitoring OEE dan predictive maintenance.", status: "in-progress" as const },
+            { sprint: "Sprint 4", week: "Week 7-8", deliverable: "UAT & Go-Live", description: "User acceptance testing dengan tim produksi, fine-tuning alert threshold, deployment production dan training operator.", status: "upcoming" as const }
         ]
     },
     {
@@ -53,6 +60,12 @@ const cases = [
             { step: "02", label: "Weather Sync", detail: "Sistem menyinkronkan data tanah dengan ramalan cuaca BMKG melalui satelit." },
             { step: "03", label: "Auto Irrigation", detail: "AI menginstruksikan katup air otomatis untuk menyiram sesuai kebutuhan presisi tanaman." },
             { step: "04", label: "Yield Prediction", detail: "Petani menerima estimasi masa panen dan anjuran pemupukan via aplikasi." }
+        ],
+        timeline: [
+            { sprint: "Sprint 1", week: "Week 1-2", deliverable: "Land Surveying & Soil Analysis", description: "Analisis karakteristik lahan, pengukuran pH dan NPK baseline, penentuan titik sensor optimal.", status: "completed" as const },
+            { sprint: "Sprint 2", week: "Week 3-4", deliverable: "Sensor Deployment & Irrigation Setup", description: "Instalasi probe sensor tanah, pemasangan katup otomatis, integrasi weather API BMKG.", status: "completed" as const },
+            { sprint: "Sprint 3", week: "Week 5-6", deliverable: "AI Calibration & Mobile App Launch", description: "Kalibrasi AI irrigation model dengan data lokal, deployment aplikasi mobile untuk monitoring petani.", status: "in-progress" as const },
+            { sprint: "Sprint 4", week: "Week 7-8", deliverable: "Pilot Testing & Optimization", description: "Testing irigasi otomatis pada plot uji coba, adjustment parameter AI, training petani end-user.", status: "upcoming" as const }
         ]
     },
     {
@@ -78,6 +91,12 @@ const cases = [
             { step: "02", label: "Smart Ventilation", detail: "Kipas ventilasi otomatis aktif jika kualitas udara menurun di bawah ambang batas aman." },
             { step: "03", label: "Feeding Automation", detail: "Mesin pakan otomatis mengeluarkan takaran berdasarkan usia dan berat rata-rata ternak." },
             { step: "04", label: "Health Log", detail: "Sistem mencatat riwayat kesehatan kolektif untuk mencegah penyebaran wabah." }
+        ],
+        timeline: [
+            { sprint: "Sprint 1", week: "Week 1-2", deliverable: "Livestock Facility Audit", description: "Inspeksi kandang, pengukuran baseline ammonia level, identifikasi hotspot ventilasi buruk.", status: "completed" as const },
+            { sprint: "Sprint 2", week: "Week 3-4", deliverable: "Air Quality & Feeding System Install", description: "Pasang sensor gas NH3 dan humidity, instalasi smart feeder otomatis, integrasi ventilasi controller.", status: "completed" as const },
+            { sprint: "Sprint 3", week: "Week 5-6", deliverable: "Health Tracking Dashboard", description: "Development dashboard monitoring real-time kondisi kandang, input data kesehatan ternak manual.", status: "in-progress" as const },
+            { sprint: "Sprint 4", week: "Week 7-8", deliverable: "Full Automation & Training", description: "Aktivasi sistem feeding/ventilation automation, pelatihan peternak untuk menggunakan dashboard.", status: "upcoming" as const }
         ]
     },
     {
@@ -103,6 +122,12 @@ const cases = [
             { step: "02", label: "User Profiling", detail: "AI mempelajari kebiasaan penghuni rumah dalam penggunaan energi (Lampu/AC)." },
             { step: "03", label: "Security Alert", detail: "Enkripsi data dua arah memberikan notifikasi instan jika terdeteksi aktivitas mencurigakan." },
             { step: "04", label: "Energy Saving", detail: "Sistem mengoptimalkan pemakaian listrik secara otomatis saat rumah dalam keadaan kosong." }
+        ],
+        timeline: [
+            { sprint: "Sprint 1", week: "Week 1-2", deliverable: "Smart Home Assessment", description: "Survey rumah, identifikasi perangkat yang akan diintegrasikan, desain network topology IoT.", status: "completed" as const },
+            { sprint: "Sprint 2", week: "Week 3-4", deliverable: "IoT Device Installation", description: "Instalasi smart lock biometric, smart plug untuk AC/lampu, CCTV terintegrasi, gas leak detector.", status: "completed" as const },
+            { sprint: "Sprint 3", week: "Week 5-6", deliverable: "AI Learning & Mobile Control", description: "AI mulai learning pattern penghuni, setup mobile app untuk remote control, test automation rules.", status: "in-progress" as const },
+            { sprint: "Sprint 4", week: "Week 7-8", deliverable: "Full Automation & Handover", description: "Aktivasi auto energy saving mode, integrasi notifikasi security alert ke smartphone, user training.", status: "upcoming" as const }
         ]
     }
 ];
@@ -265,6 +290,23 @@ export default function UseCase() {
                         </div>
                     </div>
                 </div>
+
+                {/* PROJECT TIMELINE SECTION */}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={`timeline-${activeTab.id}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                    >
+                        {activeTab.timeline && (
+                            <ProjectTimeline
+                                timeline={activeTab.timeline}
+                                useCaseTitle={activeTab.title}
+                            />
+                        )}
+                    </motion.div>
+                </AnimatePresence>
 
             </div>
         </section>

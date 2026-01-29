@@ -1,11 +1,31 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Star, ShoppingCart, ChevronRight, Zap, Activity, ShieldCheck, Fingerprint, Cpu } from 'lucide-react';
+import { Star, ShoppingCart, ChevronRight, Zap, Activity, ShieldCheck, Fingerprint, Cpu, LucideIcon } from 'lucide-react';
 import CustomSensorModal from './CustomSensorModal';
 
-export default function ProductShowcase() {
+interface FloatingBadgeProps {
+    icon: LucideIcon;
+    label: string;
+    value: string;
+    position: string;
+}
+
+// Memoized FloatingBadge component to prevent re-renders
+const FloatingBadge = memo(({ icon: Icon, label, value, position }: FloatingBadgeProps) => (
+    <div className={`absolute ${position} z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3`}>
+        <div className={`w-6 h-6 md:w-8 md:h-8 ${label === 'Status' ? 'bg-blue-100 text-blue-600' : 'bg-green-100 text-green-600'} rounded-lg flex items-center justify-center`}>
+            <Icon size={14} className="md:w-[18px] md:h-[18px]" />
+        </div>
+        <div>
+            <p className="text-[7px] md:text-[9px] text-slate-400 font-bold uppercase tracking-tight">{label}</p>
+            <p className="text-[10px] md:text-xs font-bold text-slate-900">{value}</p>
+        </div>
+    </div>
+));
+FloatingBadge.displayName = 'FloatingBadge';
+
+function ProductShowcase() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
@@ -17,7 +37,7 @@ export default function ProductShowcase() {
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         {/* Image */}
                         <div className="relative flex items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 min-h-[400px] md:min-h-[500px] overflow-hidden group">
-                            <div className="absolute inset-0 bg-blue-500/10 blur-[120px] rounded-full scale-110 group-hover:scale-150 transition-transform duration-700"></div>
+                            <div className="absolute inset-0 bg-blue-500/10 blur-[120px] rounded-full scale-110 transition-transform duration-700"></div>
                             <Image
                                 src="/Biotrix.png"
                                 alt="Biotrix Smart Fingerprint Access"
@@ -25,28 +45,24 @@ export default function ProductShowcase() {
                                 height={800}
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 quality={85}
+                                priority
+                                placeholder="blur"
+                                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4="
                                 className="w-[90%] h-[90%] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
                             />
-                            {/* Floating Badges */}
-                            <div className="absolute top-6 left-6 md:top-10 md:left-8 z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3">
-                                <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                                    <Activity size={14} className="md:w-[18px] md:h-[18px]" />
-                                </div>
-                                <div>
-                                    <p className="text-[7px] md:text-[9px] text-slate-400 font-bold uppercase tracking-tight">Status</p>
-                                    <p className="text-[10px] md:text-xs font-bold text-slate-900">Real-time Active</p>
-                                </div>
-                            </div>
-
-                            <div className="absolute bottom-6 right-6 md:bottom-10 md:right-8 z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3">
-                                <div className="w-6 h-6 md:w-8 md:h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
-                                    <ShieldCheck size={14} className="md:w-[18px] md:h-[18px]" />
-                                </div>
-                                <div>
-                                    <p className="text-[7px] md:text-[9px] text-slate-400 font-bold uppercase tracking-tight">Security</p>
-                                    <p className="text-[10px] md:text-xs font-bold text-slate-900">Industrial Grade</p>
-                                </div>
-                            </div>
+                            {/* Floating Badges - Using memoized component */}
+                            <FloatingBadge
+                                icon={Activity}
+                                label="Status"
+                                value="Real-time Active"
+                                position="top-6 left-6 md:top-10 md:left-8"
+                            />
+                            <FloatingBadge
+                                icon={ShieldCheck}
+                                label="Security"
+                                value="Industrial Grade"
+                                position="bottom-6 right-6 md:bottom-10 md:right-8"
+                            />
                         </div>
 
                         {/* Product Info */}
@@ -94,10 +110,10 @@ export default function ProductShowcase() {
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row gap-4">
-                                    <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-200 group">
+                                    <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-200">
                                         <ShoppingCart size={20} />
                                         Beli Sekarang
-                                        <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                        <ChevronRight size={18} className="transition-transform" />
                                     </button>
                                     <button
                                         onClick={() => setIsModalOpen(true)}
@@ -182,35 +198,31 @@ export default function ProductShowcase() {
 
                         {/* Image - Kanan */}
                         <div className="relative flex items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 min-h-[400px] md:min-h-[500px] overflow-hidden group order-first lg:order-last">
-                            <div className="absolute inset-0 bg-blue-500/10 blur-[120px] rounded-full scale-110 group-hover:scale-150 transition-transform duration-700"></div>
+                            <div className="absolute inset-0 bg-blue-500/10 blur-[120px] rounded-full scale-110 transition-transform duration-700"></div>
                             <Image
                                 src="/RoomPulse.png"
                                 alt="RoomPulse Monitoring System"
                                 width={800}
                                 height={800}
                                 sizes="(max-width: 768px) 100vw, 50vw"
-                                quality={85}
+                                quality={80}
+                                loading="lazy"
+                                placeholder="blur"
+                                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4="
                                 className="w-[90%] h-[90%] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
                             />
-                            <div className="absolute top-6 left-6 md:top-10 md:left-8 z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3">
-                                <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                                    <Activity size={14} className="md:w-[18px] md:h-[18px]" />
-                                </div>
-                                <div>
-                                    <p className="text-[7px] md:text-[9px] text-slate-400 font-bold uppercase tracking-tight">Status</p>
-                                    <p className="text-[10px] md:text-xs font-bold text-slate-900">Real-time Active</p>
-                                </div>
-                            </div>
-
-                            <div className="absolute bottom-6 right-6 md:bottom-10 md:right-8 z-20 bg-white/90 backdrop-blur-md p-2 md:p-3 rounded-2xl shadow-xl border border-white flex items-center gap-2 md:gap-3">
-                                <div className="w-6 h-6 md:w-8 md:h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
-                                    <ShieldCheck size={14} className="md:w-[18px] md:h-[18px]" />
-                                </div>
-                                <div>
-                                    <p className="text-[7px] md:text-[9px] text-slate-400 font-bold uppercase tracking-tight">Security</p>
-                                    <p className="text-[10px] md:text-xs font-bold text-slate-900">Industrial Grade</p>
-                                </div>
-                            </div>
+                            <FloatingBadge
+                                icon={Activity}
+                                label="Status"
+                                value="Real-time Active"
+                                position="top-6 left-6 md:top-10 md:left-8"
+                            />
+                            <FloatingBadge
+                                icon={ShieldCheck}
+                                label="Security"
+                                value="Industrial Grade"
+                                position="bottom-6 right-6 md:bottom-10 md:right-8"
+                            />
                         </div>
                     </div>
 
@@ -221,3 +233,5 @@ export default function ProductShowcase() {
         </>
     );
 }
+
+export default memo(ProductShowcase);

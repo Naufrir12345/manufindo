@@ -1,12 +1,20 @@
 "use client";
 import React from 'react';
 import DetailProduct from '../components/DetailProduct';
-import { ArrowLeft, Zap, Target, BarChart3, Layers, Clock, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Zap, Target, BarChart3, Layers, Clock, ShieldCheck, LucideIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 
+interface FeatureCardProps {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  tag: string;
+  color: string;
+}
+
 // Komponen Card Fitur berdasarkan screenshot
-const FeatureCard = ({ icon: Icon, title, desc, tag, color }: any) => (
+const FeatureCard = ({ icon: Icon, title, desc, tag, color }: FeatureCardProps) => (
   <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col gap-4 relative overflow-hidden group">
     <div className={`w-12 h-12 ${color} rounded-xl flex items-center justify-center text-white`}>
       <Icon size={24} />
@@ -38,7 +46,7 @@ export default function PricingPage() {
   };
 
   return (
-    <motion.main 
+    <motion.main
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -46,7 +54,7 @@ export default function PricingPage() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Tombol Back */}
-        <motion.button 
+        <motion.button
           variants={itemVariants}
           onClick={() => router.back()}
           className="group flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-all mb-16 font-semibold"
@@ -68,48 +76,48 @@ export default function PricingPage() {
         </motion.div>
 
         {/* GRID FITUR (Sesuai Screenshot) */}
-        <motion.div 
+        <motion.div
           variants={itemVariants}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24"
         >
-          <FeatureCard 
-            icon={Zap} 
-            title="Analisis 100x Lebih Cepat" 
+          <FeatureCard
+            icon={Zap}
+            title="Analisis 100x Lebih Cepat"
             desc="Scan ratusan data dalam hitungan menit, bukan jam. Teknologi AI kami ekstraksi data penting otomatis."
             tag="10 detik/data"
             color="bg-blue-500"
           />
-          <FeatureCard 
-            icon={Target} 
-            title="Temukan Perfect Match Otomatis" 
+          <FeatureCard
+            icon={Target}
+            title="Temukan Perfect Match Otomatis"
             desc="Filter berdasarkan kriteria custom dengan akurasi hingga 95% untuk kebutuhan industri Anda."
             tag="95% akurasi"
             color="bg-emerald-500"
           />
-          <FeatureCard 
-            icon={BarChart3} 
-            title="Ranking Objektif & Transparan" 
+          <FeatureCard
+            icon={BarChart3}
+            title="Ranking Objektif & Transparan"
             desc="Scoring 0-100 berdasarkan performa dengan breakdown detail. Eliminasi bias subjektif."
             tag="0-100 score"
             color="bg-indigo-500"
           />
-          <FeatureCard 
-            icon={Layers} 
-            title="Batch Process Skala Besar" 
+          <FeatureCard
+            icon={Layers}
+            title="Batch Process Skala Besar"
             desc="Upload ribuan file sekaligus. Proses ratusan data secara paralel dalam waktu singkat."
             tag="1000 data/batch"
             color="bg-sky-500"
           />
-          <FeatureCard 
-            icon={Clock} 
-            title="Hasil Instant dengan Analisis" 
+          <FeatureCard
+            icon={Clock}
+            title="Hasil Instant dengan Analisis"
             desc="Dapatkan summary detail per kategori. Identifikasi kebutuhan perbaikan secara real-time."
             tag="Real-time"
             color="bg-cyan-500"
           />
-          <FeatureCard 
-            icon={ShieldCheck} 
-            title="Data Aman dengan Compliance" 
+          <FeatureCard
+            icon={ShieldCheck}
+            title="Data Aman dengan Compliance"
             desc="Keamanan data terjamin dengan enkripsi end-to-end dan standar keamanan internasional."
             tag="ISO Certified"
             color="bg-blue-600"

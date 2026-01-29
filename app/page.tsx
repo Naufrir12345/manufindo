@@ -68,7 +68,7 @@ export default function Home() {
 
       {/* Below the fold - lazy loaded */}
       <Suspense fallback={<div className="h-96 bg-slate-50 animate-pulse" />}>
-        <IoTImplementation />
+        {/* <IoTImplementation /> */}
       </Suspense>
 
       <Suspense fallback={<div className="h-48 bg-white animate-pulse" />}>

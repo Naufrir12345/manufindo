@@ -23,14 +23,7 @@ export default function OrbitLiveDashboard() {
         Array.from({ length: 40 }, () => Math.floor(Math.random() * 60) + 20)
     );
 
-    const handleSendAccess = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Di sini Anda bisa menambahkan logika pengiriman email
-        console.log("Request dikirim untuk email:", emailInput);
-        alert("Permintaan akses telah dikirim! Tim kami akan segera menghubungi Anda.");
-        setIsModalOpen(false);
-        setEmailInput("");
-    };
+    // const handleSendAccess = (e: React.FormEvent) => { ... } removed as requested by lint
 
     const handleSendRequest = async (e: React.FormEvent) => {
         e.preventDefault();

@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Target, Users, Globe, ArrowRight, Lightbulb, Zap } from 'lucide-react';
+import { Target, Users, Globe, ArrowRight, Lightbulb, Zap } from 'lucide-react';
 import SuccessStories from './successstories';
 
 const AboutUs = () => {
@@ -18,12 +18,12 @@ const AboutUs = () => {
           >
             <span className="text-blue-600 text-[10px] font-black tracking-[0.4em] uppercase">The Genesis</span>
           </motion.div>
-          
+
           <h1 className="text-5xl lg:text-8xl font-black tracking-tighter mb-8 leading-[0.9]">
             Navigating the <br />
             <span className="text-blue-600 italic">Digital Orbit.</span>
           </h1>
-          
+
           <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium">
             Manufindo Cipta Nusantara lahir dari sebuah misi sederhana: Membantu industri Indonesia berbicara dalam bahasa data.
           </p>
@@ -40,12 +40,12 @@ const AboutUs = () => {
       <section className="py-32 bg-slate-900 text-white relative overflow-hidden">
         {/* Dekorasi Cahaya */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 blur-[120px] rounded-full" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
               <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight mb-8">
-                Mengubah <span className="text-blue-400">Tantangan</span> <br /> 
+                Mengubah <span className="text-blue-400">Tantangan</span> <br />
                 Menjadi <span className="text-emerald-400">Peluang.</span>
               </h2>
               <div className="space-y-6 text-slate-400 text-lg leading-relaxed">
@@ -57,18 +57,18 @@ const AboutUs = () => {
                 </p>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-2 gap-4">
-               <div className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] mt-12">
-                  <Lightbulb className="text-yellow-400 mb-4" size={32} />
-                  <h4 className="font-bold text-xl mb-2">Inovasi</h4>
-                  <p className="text-xs text-slate-400">Solusi cerdas untuk masalah kompleks.</p>
-               </div>
-               <div className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem]">
-                  <Zap className="text-blue-400 mb-4" size={32} />
-                  <h4 className="font-bold text-xl mb-2">Akselerasi</h4>
-                  <p className="text-xs text-slate-400">Mempercepat pertumbuhan bisnis Anda.</p>
-               </div>
+              <div className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] mt-12">
+                <Lightbulb className="text-yellow-400 mb-4" size={32} />
+                <h4 className="font-bold text-xl mb-2">Inovasi</h4>
+                <p className="text-xs text-slate-400">Solusi cerdas untuk masalah kompleks.</p>
+              </div>
+              <div className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem]">
+                <Zap className="text-blue-400 mb-4" size={32} />
+                <h4 className="font-bold text-xl mb-2">Akselerasi</h4>
+                <p className="text-xs text-slate-400">Mempercepat pertumbuhan bisnis Anda.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -79,19 +79,19 @@ const AboutUs = () => {
       <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            
+
             {/* Kolom Foto dengan Elemen Orbit Lingkaran */}
             <div className="relative w-full lg:w-1/2 flex justify-center items-center h-[500px]">
-              
+
               {/* Orbit Luar (Dashed) */}
-              <motion.div 
+              <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                 className="absolute w-[350px] h-[350px] md:w-[480px] md:h-[480px] border border-blue-200 border-dashed rounded-full"
               />
 
               {/* Orbit Dalam dengan Icon Berjalan */}
-              <motion.div 
+              <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                 className="absolute w-[280px] h-[280px] md:w-[380px] md:h-[380px] border border-slate-100 rounded-full"
@@ -108,15 +108,15 @@ const AboutUs = () => {
               {/* Foto CEO Berbentuk Lingkaran */}
               <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-full p-[2px] bg-gradient-to-b from-blue-400/20 to-transparent">
                 <div className="relative w-full h-full rounded-full overflow-hidden border-8 border-white shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)]">
-                  <Image 
-                    src="/adhi.png" 
+                  <Image
+                    src="/adhi.png"
                     alt="CEO Manufindo"
                     fill
                     className="object-cover"
                   />
                 </div>
                 {/* Label Glassmorphism */}
-                <motion.div 
+                <motion.div
                   className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-md text-white px-8 py-2.5 rounded-full whitespace-nowrap shadow-2xl border border-white/10"
                 >
                   <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-400">Founder & CEO</p>
@@ -161,7 +161,7 @@ const AboutUs = () => {
       <section className="py-32 bg-white px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
-            <motion.div 
+            <motion.div
               whileHover={{ y: -10 }}
               className="bg-slate-50 p-16 rounded-[4rem] border border-slate-100 transition-all"
             >
@@ -174,7 +174,7 @@ const AboutUs = () => {
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               whileHover={{ y: -10 }}
               className="bg-slate-900 p-16 rounded-[4rem] text-white transition-all shadow-2xl shadow-slate-200"
             >

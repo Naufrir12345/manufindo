@@ -10,10 +10,25 @@ const nextConfig: NextConfig = {
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+
   // Enable experimental features for better performance
   experimental: {
-    optimizePackageImports: ['framer-motion', 'lottie-react'],
+    optimizePackageImports: ['framer-motion', 'lottie-react', 'lucide-react', '@react-three/fiber', '@react-three/drei'],
   },
+
+  // Turbopack config for Next.js 16 (replaces webpack)
+  turbopack: {},
+
+  // Performance optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  // Enable compression
+  compress: true,
+
+  // PoweredBy header removal for security
+  poweredByHeader: false,
 };
 
 export default nextConfig;

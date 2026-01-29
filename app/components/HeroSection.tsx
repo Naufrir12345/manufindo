@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Cpu, Cloud, Smartphone, Factory, BrainCircuit } from 'lucide-react';
 import { AuroraBackground } from './AuroraTexture';
 
@@ -12,7 +12,7 @@ export default function HeroSection() {
                 <div className="space-y-8 uppercase-none">
                     <div className="relative inline-block px-4 py-1.5 rounded-full bg-white border border-blue-100 overflow-hidden group">
                         <div className="absolute inset-0 pointer-events-none">
-                            <div className="animate-border-beam absolute top-0 left-0 w-[40px] h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent blur-[1px]"></div>
+                            <div className="animate-border-beam absolute top-0 left-0 w-[40px] h-[2px] bg-gradient-to-r from-transparent via-blue-50 to-transparent blur-[1px]"></div>
                         </div>
                         <span className="relative z-10 text-blue-600 text-[10px] md:text-sm font-bold tracking-[0.2em]">
                             BEYOND THE LINE. INTO THE DIGITAL ORBIT.
