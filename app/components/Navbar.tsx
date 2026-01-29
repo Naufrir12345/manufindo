@@ -110,10 +110,34 @@ const Navbar = () => {
   }, []);
 
   const products = [
-    { icon: Zap, title: "Orbit Talent", desc: "Ubah ribuan CV menjadi keputusan rekrutmen yang tepat dengan teknologi AI Scoring.", color: "bg-gradient-to-br from-blue-500 via-indigo-600 to-slate-900" },
-    { icon: Activity, title: "Biotrix Fingerprint", desc: "Pelacakan armada otomatis dan manajemen rute berbasis IoT untuk efisiensi logistik.", color: "bg-gradient-to-br from-purple-500 via-fuchsia-600 to-slate-900" },
-    { icon: Cpu, title: "Room Pulse System", desc: "Monitoring ruangan cerdas secara real-time untuk memantau suhu, debu, dan cahaya.", color: "bg-gradient-to-br from-emerald-500 via-teal-600 to-slate-900" },
-    { icon: Factory, title: "Manufindo Smart Ops", desc: "Integrasi operasional pabrik cerdas untuk meningkatkan output produksi secara signifikan.", color: "bg-gradient-to-br from-orange-500 via-red-600 to-slate-900" }
+    {
+      icon: Zap,
+      title: "Orbit Talent",
+      desc: "Ubah ribuan CV menjadi keputusan rekrutmen yang tepat dengan teknologi AI Scoring.",
+      color: "bg-gradient-to-br from-blue-500 via-indigo-600 to-slate-900",
+      path: "/platform" // Misalnya ini ke halaman platform biasa yang ringan
+    },
+    {
+      icon: Activity,
+      title: "Biotrix Fingerprint",
+      desc: "Pelacakan armada otomatis dan manajemen rute berbasis IoT untuk efisiensi logistik.",
+      color: "bg-gradient-to-br from-purple-500 via-fuchsia-600 to-slate-900",
+      path: "/simulation" // HANYA ini yang ke halaman 3D berat
+    },
+    {
+      icon: Cpu,
+      title: "Room Pulse System",
+      desc: "Monitoring ruangan cerdas secara real-time untuk memantau suhu, debu, dan cahaya.",
+      color: "bg-gradient-to-br from-emerald-500 via-teal-600 to-slate-900",
+      path: "/platform" // Arahkan ke halaman lain yang lebih ringan
+    },
+    {
+      icon: Factory,
+      title: "Manufindo Smart Ops",
+      desc: "Integrasi operasional pabrik cerdas untuk meningkatkan output produksi secara signifikan.",
+      color: "bg-gradient-to-br from-orange-500 via-red-600 to-slate-900",
+      path: "/platform" // Arahkan ke halaman lain yang lebih ringan
+    }
   ];
 
   // Fungsi untuk scroll tumpukan
@@ -292,7 +316,11 @@ const Navbar = () => {
                     activeIndex={activeIndex}
                     total={products.length}
                     onClick={() => setActiveIndex(idx)}
-                    onSimulasiClick={() => { setIsOpen(false); router.push('/simulation'); }}
+                    // UBAH BAGIAN INI:
+                    onSimulasiClick={() => {
+                      setIsOpen(false);
+                      router.push(item.path); // Menggunakan path unik tiap produk
+                    }}
                     onDetailClick={() => {
                       setIsOpen(false);
                       if (idx === 0) router.push('/pricing');
