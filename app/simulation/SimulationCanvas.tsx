@@ -51,7 +51,7 @@ export default function SimulationCanvas({
 
             <Canvas shadows camera={{ position: [0, 0, 4], fov: 45 }}>
                 <Suspense fallback={null}>
-                    <Stage environment="city" intensity={0.5}>
+                    <Stage intensity={0.5} environment={undefined}>
                         <ProductModel
                             isPowerOn={isPowerOn}
                             setIsPowerOn={setIsPowerOn}
@@ -102,6 +102,8 @@ export default function SimulationCanvas({
                             }}
                         />
                     </Stage>
+                    <ambientLight intensity={0.7} />
+                    <pointLight position={[10, 10, 10]} />
                 </Suspense>
 
                 <OrbitControls

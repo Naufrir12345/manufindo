@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, lazy, Suspense } from 'react';
+import SimulationGate from "../components/SimulationGate";
 
 // Lazy load the 3D Canvas to optimize performance
 const SimulationCanvas = lazy(() => import('./SimulationCanvas'));
@@ -263,21 +264,23 @@ export default function SimulationPage() {
       </div>
 
       <div className="p-8 h-screen bg-slate-50">
-        <Suspense fallback={
-          <div className="flex items-center justify-center w-full h-full bg-slate-100 rounded-[32px] border border-slate-200">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-          </div>
-        }>
-          <SimulationCanvas
-            isPowerOn={isPowerOn}
-            setIsPowerOn={setIsPowerOn}
-            tempConfig={tempConfig}
-            batasTapIn={batasTapIn}
-            employeeSettings={employeeSettings}
-            setResults={setResults}
-            setTempConfig={setTempConfig}
-          />
-        </Suspense>
+        <SimulationGate>
+          <Suspense fallback={
+            <div className="flex items-center justify-center w-full h-full bg-slate-100 rounded-[32px] border border-slate-200">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            </div>
+          }>
+            <SimulationCanvas
+              isPowerOn={isPowerOn}
+              setIsPowerOn={setIsPowerOn}
+              tempConfig={tempConfig}
+              batasTapIn={batasTapIn}
+              employeeSettings={employeeSettings}
+              setResults={setResults}
+              setTempConfig={setTempConfig}
+            />
+          </Suspense>
+        </SimulationGate>
       </div>
     </div>
   );

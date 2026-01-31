@@ -130,18 +130,8 @@ const Navbar = () => {
       desc: "Monitoring ruangan cerdas secara real-time untuk memantau suhu, debu, dan cahaya.",
       color: "bg-gradient-to-br from-emerald-500 via-teal-600 to-slate-900",
       path: "/platform" // Arahkan ke halaman lain yang lebih ringan
-    },
-    {
-      icon: Factory,
-      title: "Manufindo Smart Ops",
-      desc: "Integrasi operasional pabrik cerdas untuk meningkatkan output produksi secara signifikan.",
-      color: "bg-gradient-to-br from-orange-500 via-red-600 to-slate-900",
-      path: "/platform" // Arahkan ke halaman lain yang lebih ringan
     }
   ];
-
-  // Fungsi untuk scroll tumpukan
-  // const nextCard = () => setActiveIndex((prev) => (prev + 1) % products.length);
 
   useEffect(() => {
     if (!isOpen) return; // Hanya jalankan listener jika modal/gallery terbuka
@@ -211,7 +201,9 @@ const Navbar = () => {
               >
                 Orbit Platform
               </button>
-              <button className="px-6 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all">
+              <button
+                onClick={() => { router.push('/mitra'); setIsMobileMenuOpen(false); }}
+                className="px-6 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all">
                 Gabung Mitra
               </button>
             </div>
@@ -277,7 +269,9 @@ const Navbar = () => {
                 Orbit Platform
               </button>
 
-              <button className="mt-4 px-6 py-4 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all">
+              <button
+                onClick={() => { router.push('/mitra'); setIsMobileMenuOpen(false); }}
+                className="mt-4 px-6 py-4 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all">
                 Gabung Mitra
               </button>
             </motion.div>

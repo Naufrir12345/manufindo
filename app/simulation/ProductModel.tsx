@@ -8,7 +8,7 @@ interface ProductModelProps {
 }
 
 export function ProductModel({ setIsPowerOn, isPowerOn, onFingerSuccess }: ProductModelProps) {
-  const { scene } = useGLTF('models/fingerprint.glb');
+  const { scene } = useGLTF('/models/finger.glb');
   const [isTapping, setIsTapping] = useState(false);
   const [progress, setProgress] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);

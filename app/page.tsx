@@ -2,10 +2,8 @@
 import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 
-// Static imports for above-the-fold content
 import HeroSection from './components/HeroSection';
 
-// Dynamic imports for below-the-fold content (lazy loaded)
 const IoTImplementation = dynamic(() => import('./components/IoTImplementation'), {
   loading: () => <div className="h-96 bg-slate-50 animate-pulse rounded-3xl" />,
 });
